@@ -51,7 +51,7 @@ class CssAbsoluteFilter(FilterBase):
         if local_path.startswith(self.url_path):
             local_path = local_path.replace(self.url_path, "", 1)
         # Re-build the local full path by adding root
-        filename = os.path.join(self.root, local_path.lstrip('/'))
+        filename = (os.path.join(self.root, local_path.lstrip('/'))).encode('utf-8')
         return os.path.exists(filename) and filename
 
     def add_suffix(self, url):
